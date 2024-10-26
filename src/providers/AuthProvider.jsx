@@ -1,21 +1,18 @@
-import React, { createContext, useEffect, useState } from 'react';
-
+import React, { createContext, useState } from 'react';
 export const AuthContext = createContext(null);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // useEffect(()=>{
-  //   const unsubscribe = onAuthStateChanged(auth, currentUser => {
-  //     console.log("auth state change", currentUser);
-  //     setUser(currentUser);
-  //   })
-  // },[])
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const toggleDrawer = () => setIsDrawerOpen(prevState => !prevState);
   const authInfo = {
-   user,
-   loading
-  }
-  
+    user,
+    loading,
+    isDrawerOpen,
+    toggleDrawer,
+  };
+
   return (
     <AuthContext.Provider value={authInfo}>
       {children}

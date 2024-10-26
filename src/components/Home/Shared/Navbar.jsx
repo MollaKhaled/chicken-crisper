@@ -6,7 +6,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 const Navbar = () => {
   const [cart] = UseCart();
   const navItems = <>
-   <li><Link to='/'>Home</Link></li>
+    <li><Link to='/'>Home</Link></li>
     <li><Link to='/signup'>Register</Link></li>
     <li><Link to='/menu'>Our Menu</Link></li>
     <li><Link to='/order/salad'>Order Food</Link></li>
