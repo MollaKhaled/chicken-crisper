@@ -1,15 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UseCart from '../../../hooks/UseCart';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
+  const [cart] = UseCart();
   const navItems = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/review'>Register</Link></li>
+   <li><Link to='/'>Home</Link></li>
+    <li><Link to='/signup'>Register</Link></li>
     <li><Link to='/menu'>Our Menu</Link></li>
-    <li><Link to='/order'>Order Food</Link></li>
+    <li><Link to='/order/salad'>Order Food</Link></li>
+    <li>
+      <button className='btn gap-2'>
+        <FaShoppingCart></FaShoppingCart>
+        <div className='badge badge-secondary'>+{cart?.length}</div>
+      </button>
+    </li>
   </>
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -32,7 +41,7 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        {/* <Link to='/'><img className='w-32' src={logo} alt="" /></Link> */}
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -40,7 +49,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <button className="btn btn-warning">Admin</button>
       </div>
     </div>
   );
